@@ -23,7 +23,8 @@ public class AreaExit : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            SceneManager.LoadScene(areaToLoad);
+            StartCoroutine(wait());
+            
             PlayerController.instance.setcanwalk(0f);
         }
     }
@@ -31,6 +32,7 @@ public class AreaExit : MonoBehaviour
     private IEnumerator wait()
     {
         yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(areaToLoad);
         PlayerController.instance.areaTransetionName = areaTransetionName;
         PlayerController.instance.setcanwalk(5f);
 
