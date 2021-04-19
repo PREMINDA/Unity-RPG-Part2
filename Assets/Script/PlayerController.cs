@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
 
     public string areaTransetionName;
 
+    private Vector3 bottomLeft;
+    private Vector3 topRight;
+
     private void Awake()
     {
         if (instance == null)
@@ -51,11 +54,18 @@ public class PlayerController : MonoBehaviour
             _playerAnimator.SetFloat("lastMoveY", Vmove);
         }
 
-      
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeft.x, topRight.x), Mathf.Clamp(transform.position.y, bottomLeft.y, topRight.y), transform.position.z);
+
     }
 
     public void setcanwalk(float can)
     {
         speed = can;
+    }
+
+    public void playerLimit(Vector3 Lower,Vector3 Uper)
+    {
+        bottomLeft = Lower + new Vector3(1f, 1f, 0);
+        topRight = Uper + new Vector3(-1f, -1f, 0);
     }
 }

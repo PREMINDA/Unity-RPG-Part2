@@ -44,6 +44,15 @@ TagManager:
   - name: BackGround
     uniqueID: 2825226055
     locked: 0
+  - name: Flower
+    uniqueID: 2638883391
+    locked: 0
+  - name: Water
+    uniqueID: 3954859519
+    locked: 0
+  - name: Object
+    uniqueID: 1131906647
+    locked: 0
   - name: Player
     uniqueID: 3731652111
     locked: 0
