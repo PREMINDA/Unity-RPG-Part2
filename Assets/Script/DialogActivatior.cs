@@ -6,6 +6,8 @@ public class DialogActivatior : MonoBehaviour
 {
     private bool _isEnable=false;
     private bool _isEscapeEnable = false;
+    public string[] dialogs;
+
     void Start()
     {
         
@@ -18,14 +20,17 @@ public class DialogActivatior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && _isEnable== true)
         {
             DialogManager.insance.setActivate(true);
-            PlayerController.instance.setcanwalk(0);
+            DialogManager.insance.SetDialog(dialogs);
+            PlayerController.instance.setWalkState(false);
             _isEnable = false;
             _isEscapeEnable = true;
         }
         if (Input.GetKeyDown(KeyCode.Escape) && _isEscapeEnable == true)
         {
             DialogManager.insance.setActivate(false);
-            PlayerController.instance.setcanwalk(5f);
+           
+            DialogManager.insance.Resetdialog();
+            PlayerController.instance.setWalkState(true);
             _isEnable = true;
             _isEscapeEnable = false;
         }
@@ -46,7 +51,12 @@ public class DialogActivatior : MonoBehaviour
         {
             _isEnable = false;
             _isEnable = false;
-
+            DialogManager.insance.Resetdialog();
         }
+    }
+
+    public void ReReadDialog()
+    {
+        _isEnable = true;
     }
 }

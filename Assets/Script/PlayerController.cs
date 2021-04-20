@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private Animator _playerAnimator;
     public static PlayerController instance;
 
+    private bool canMove = true;
+
     public string areaTransetionName;
 
     private Vector3 bottomLeft;
@@ -35,7 +37,10 @@ public class PlayerController : MonoBehaviour
    
     void Update()
     {
-        Movement();
+        if(canMove == true)
+        {
+            Movement();
+        }
         
     }
 
@@ -67,5 +72,10 @@ public class PlayerController : MonoBehaviour
     {
         bottomLeft = Lower + new Vector3(1f, 1f, 0);
         topRight = Uper + new Vector3(-1f, -1f, 0);
+    }
+
+    public void setWalkState(bool can)
+    {
+        canMove = can;
     }
 }

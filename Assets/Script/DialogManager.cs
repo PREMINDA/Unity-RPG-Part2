@@ -13,7 +13,9 @@ public class DialogManager : MonoBehaviour
     [SerializeField]
     private GameObject namebox;
 
-    public string[] dialogs;
+    private DialogActivatior NPC;
+
+    private string[] dialogs;
     private int dnumber = 0;
 
     public static DialogManager insance;
@@ -22,17 +24,55 @@ public class DialogManager : MonoBehaviour
     void Start()
     {
         insance = this;
+        NPC = GameObject.Find("NPC").GetComponent<DialogActivatior>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && diallogbox.activeInHierarchy)
+        {
+            dnumber++;
+            CheckIfName();
+
+            if (dialogs.Length > dnumber && dialogs[dnumber].StartsWith("n-") == false)
+            {
+                dialog.text = dialogs[dnumber];
+            }
+            else
+            {
+                diallogbox.SetActive(false);
+                Resetdialog();
+                PlayerController.instance.setWalkState(true);
+                NPC.ReReadDialog();
+            }
+        }
         
     }
 
     public void setActivate(bool set)
     {
         diallogbox.SetActive(set);
+    }
+
+    public void SetDialog(string[] dilogsArr)
+    {
+        dialogs = dilogsArr;
+        CheckIfName();
+        dialog.text = dialogs[dnumber];
+    }
+
+    private void CheckIfName()
+    {
+        if(dialogs.Length>dnumber && dialogs[dnumber].StartsWith("n-"))
+        {
+            name.text = dialogs[dnumber].Replace("n-","");
+            dnumber++;
+        }
+    }
+    public void Resetdialog()
+    {
+        dnumber = 0;
     }
 }
