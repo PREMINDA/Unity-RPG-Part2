@@ -6,30 +6,44 @@ public class DialogActivatior : MonoBehaviour
 {
     private bool _isEnable=false;
     private bool _isEscapeEnable = false;
+    [SerializeField]
     public string[] dialogs;
+    public static DialogActivatior instance;
+    private DialogManager DM;
+    private BoxCollider2D box;
+
+  
 
     void Start()
     {
-        
+        instance = this;
+        DM = GameObject.Find("Canvas").GetComponent<DialogManager>();
+        box = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+   
 
         if (Input.GetKeyDown(KeyCode.E) && _isEnable== true)
         {
-            DialogManager.insance.setActivate(true);
-            DialogManager.insance.SetDialog(dialogs);
+            DM.setActivate(true);
+
+            
+            //DialogManager.instance.setActivate(true);
+            //DialogManager.instance.SetDialog(dialogs);
             PlayerController.instance.setWalkState(false);
             _isEnable = false;
             _isEscapeEnable = true;
         }
         if (Input.GetKeyDown(KeyCode.Escape) && _isEscapeEnable == true)
         {
-            DialogManager.insance.setActivate(false);
+            DM.setActivate(false);
+            DM.Resetdialog();
+            //DialogManager.instance.setActivate(false);
            
-            DialogManager.insance.Resetdialog();
+            //DialogManager.instance.Resetdialog();
             PlayerController.instance.setWalkState(true);
             _isEnable = true;
             _isEscapeEnable = false;
@@ -42,6 +56,9 @@ public class DialogActivatior : MonoBehaviour
         if(collision.tag == "Player")
         {
             _isEnable = true;
+            DM.SetDialog(dialogs);
+
+
         }
     }
 
@@ -51,7 +68,8 @@ public class DialogActivatior : MonoBehaviour
         {
             _isEnable = false;
             _isEnable = false;
-            DialogManager.insance.Resetdialog();
+           
+            DialogManager.instance.Resetdialog();
         }
     }
 

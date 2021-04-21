@@ -37,7 +37,7 @@ public class FadeUi : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(shouldBlack);
+
         if (shouldBlack == true)
         {
             img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.MoveTowards(img.color.a, 1f, fadespeed * Time.deltaTime));

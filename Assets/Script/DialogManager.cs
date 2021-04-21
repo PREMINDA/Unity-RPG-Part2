@@ -13,18 +13,18 @@ public class DialogManager : MonoBehaviour
     [SerializeField]
     private GameObject namebox;
 
-    private DialogActivatior NPC;
+   
 
     private string[] dialogs;
     private int dnumber = 0;
 
-    public static DialogManager insance;
+    public static DialogManager instance;
 
 
     void Start()
     {
-        insance = this;
-        NPC = GameObject.Find("NPC").GetComponent<DialogActivatior>();
+        instance = this;
+       
         
     }
 
@@ -45,7 +45,7 @@ public class DialogManager : MonoBehaviour
                 diallogbox.SetActive(false);
                 Resetdialog();
                 PlayerController.instance.setWalkState(true);
-                NPC.ReReadDialog();
+                DialogActivatior.instance.ReReadDialog();
             }
         }
         
@@ -74,5 +74,6 @@ public class DialogManager : MonoBehaviour
     public void Resetdialog()
     {
         dnumber = 0;
+       
     }
 }
