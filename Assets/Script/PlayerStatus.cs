@@ -14,6 +14,7 @@ public class PlayerStatus : MonoBehaviour
     private int _currentExp = 0;
     private int _nextLevelExp = 100;
 
+    
     private int _maxHealth = 100;
     public int CurrentHP;
 
@@ -78,4 +79,15 @@ public class PlayerStatus : MonoBehaviour
             _defence += 5;
         }
     }
+
+    public int getHealt()
+    {
+        return 0;
+    }
+    public int getExp()
+    {
+        return _currentExp;
+    }
+    public int 
+
 }
