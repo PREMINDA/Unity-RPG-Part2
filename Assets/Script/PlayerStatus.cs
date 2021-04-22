@@ -8,18 +8,18 @@ public class PlayerStatus : MonoBehaviour
 {
     [SerializeField]
     private string _charName;
-    [SerializeField]
-    private int _playLevel = 1;
-    [SerializeField]
-    private int _currentExp = 0;
-    private int _nextLevelExp = 100;
+  
+    public int PlayLevel = 1;
+    
+    public int CurrentExp = 0;
+    public int NextLevelExp = 100;
 
     
     private int _maxHealth = 100;
     public int CurrentHP;
 
     private int _maxMagicPoint = 50;
-    public int _currentHP;
+    public int CurrentMP;
 
     [SerializeField]
     private int _strength = 15;
@@ -37,6 +37,8 @@ public class PlayerStatus : MonoBehaviour
 
     void Start()
     {
+        CurrentHP = 100;
+        CurrentMP = 50;
 
     }
 
@@ -45,7 +47,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            _currentExp += 10;
+            CurrentExp += 10;
             LevelUp();
         }
 
@@ -55,14 +57,15 @@ public class PlayerStatus : MonoBehaviour
 
     public void LevelUp()
     {
-        if (_currentExp >= _nextLevelExp)
+        if (CurrentExp >= NextLevelExp)
         {
             
-            _playLevel++;
-            _nextLevelExp = _currentExp + 50;
+            PlayLevel++;
+            CurrentExp = 0;
+            NextLevelExp = NextLevelExp + 20;
             _maxHealth += 2;
             ArWpPowerup();
-            Debug.Log(_playLevel);
+            Debug.Log(PlayLevel);
 
 
         }
@@ -70,7 +73,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void ArWpPowerup()
     {
-        if (_playLevel % 2 == 0)
+        if (PlayLevel % 2 == 0)
         {
             _strength += 5;
         }
@@ -80,14 +83,6 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    public int getHealt()
-    {
-        return 0;
-    }
-    public int getExp()
-    {
-        return _currentExp;
-    }
-    public int 
+   
 
 }

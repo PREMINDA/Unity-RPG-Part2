@@ -34,11 +34,21 @@ public class GameMenu : MonoBehaviour
             else
             {
                 gameMenu.SetActive(true);
+                updateUIStatus();
                 PlayerController.instance.setcanwalk(0f);
                 PlayerController.instance.setWalkState(false);
                 
             }
         }
         
+    }
+    public void updateUIStatus()
+    {
+        hpText.text = "HP : " + playerStatus.CurrentHP;
+        mpText.text = "MP : " + playerStatus.CurrentMP;
+        levelText.text = "Level : " + playerStatus.PlayLevel;
+        expText.text = playerStatus.CurrentExp+"/"+playerStatus.NextLevelExp;
+        expSlider.maxValue = playerStatus.NextLevelExp;
+        expSlider.value = playerStatus.CurrentExp;
     }
 }

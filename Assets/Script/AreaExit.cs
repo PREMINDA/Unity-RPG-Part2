@@ -26,6 +26,7 @@ public class AreaExit : MonoBehaviour
             FadeUi.instance.FadeScreenBlack();
             StartCoroutine(wait());
             PlayerController.instance.setcanwalk(0f);
+            
             FadeUi.instance.FadeScreenBlack();
         }
     }
@@ -36,6 +37,7 @@ public class AreaExit : MonoBehaviour
         SceneManager.LoadScene(areaToLoad);
         PlayerController.instance.areaTransetionName = areaTransetionName;
         PlayerController.instance.setcanwalk(5f);
+ 
 
     }
 }
