@@ -78,4 +78,8 @@ public class GameMenu : MonoBehaviour
         }
         gameMenu.SetActive(false);
     }
+    public void playerStatusUpdate()
+    {
+
+    }
 }
