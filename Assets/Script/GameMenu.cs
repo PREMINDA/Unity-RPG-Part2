@@ -8,6 +8,9 @@ public class GameMenu : MonoBehaviour
     [SerializeField]
     private GameObject gameMenu;
 
+    [SerializeField]
+    private GameObject[] gameWindows;
+
     private PlayerStatus playerStatus;
 
     public Text hpText, mpText, levelText, expText;
@@ -27,7 +30,8 @@ public class GameMenu : MonoBehaviour
         {
             if (gameMenu.activeInHierarchy)
             {
-                gameMenu.SetActive(false);
+                //gameMenu.SetActive(false);
+                closeMenu();
                 PlayerController.instance.setcanwalk(5f);
                 PlayerController.instance.setWalkState(true);
             }
@@ -50,5 +54,28 @@ public class GameMenu : MonoBehaviour
         expText.text = playerStatus.CurrentExp+"/"+playerStatus.NextLevelExp;
         expSlider.maxValue = playerStatus.NextLevelExp;
         expSlider.value = playerStatus.CurrentExp;
+    }
+    public void toggleView(int val)
+    {
+        for(int i = 0;i<gameWindows.Length; i++)
+        {
+            if(val == i)
+            {
+                gameWindows[i].SetActive(!gameWindows[i].activeInHierarchy);
+            }
+            else
+            {
+                gameWindows[i].SetActive(false);
+            }
+        }
+
+    }
+    public void closeMenu()
+    {
+        for(int i = 0; i < gameWindows.Length; i++)
+        {
+            gameWindows[i].SetActive(false);
+        }
+        gameMenu.SetActive(false);
     }
 }
