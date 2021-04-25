@@ -17,8 +17,8 @@ public class GameMenu : MonoBehaviour
 
     public Slider expSlider;
 
-    public Text Status_Hp, Status_Mp, Status_WeponPow, Status_ArmorPow;
-    public string Status_WeponEquiped, Status_ArmorEqiped;
+    public Text Status_Hp, Status_Mp, Status_WeponPow, Status_ArmourPow;
+    public string Status_WeponEquiped, Status_ArmourEqiped;
 
 
  
