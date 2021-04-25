@@ -17,6 +17,12 @@ public class GameMenu : MonoBehaviour
 
     public Slider expSlider;
 
+    public Text Status_Hp, Status_Mp, Status_WeponPow, Status_ArmorPow;
+    public string Status_WeponEquiped, Status_ArmorEqiped;
+
+
+ 
+
     void Start()
     {
         playerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
@@ -80,6 +86,10 @@ public class GameMenu : MonoBehaviour
     }
     public void playerStatusUpdate()
     {
+        Status_Hp.text = "HP : " + playerStatus.CurrentHP;
+        Status_Mp.text = "MP : " + playerStatus.CurrentMP;
+        
+       
 
     }
 }

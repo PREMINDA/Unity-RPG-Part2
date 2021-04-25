@@ -4,6 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField]
@@ -35,8 +38,13 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     private Sprite CharImage;
 
+
+
     void Start()
     {
+
+        
+
         CurrentHP = 100;
         CurrentMP = 50;
 
@@ -50,6 +58,7 @@ public class PlayerStatus : MonoBehaviour
             CurrentExp += 10;
             LevelUp();
         }
+        
 
     }
 
@@ -82,6 +91,8 @@ public class PlayerStatus : MonoBehaviour
             _defence += 5;
         }
     }
+
+ 
 
    
 
